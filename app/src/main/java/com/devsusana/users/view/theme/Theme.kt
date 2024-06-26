@@ -1,4 +1,4 @@
-package com.devsusana.users.ui.theme
+package com.devsusana.users.view.theme
 
 import android.app.Activity
 import android.os.Build

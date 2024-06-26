@@ -1,4 +1,4 @@
-package com.devsusana.users.ui.theme
+package com.devsusana.users.view.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
