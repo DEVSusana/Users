@@ -3,27 +3,27 @@ package com.devsusana.users.view.pagin
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.Result
+import com.devsusana.users.data.model.Data
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
 class ResultDataSource @Inject constructor(
     private val apiService: ApiService
-) : PagingSource<Int, Result>() {
+) : PagingSource<Int, Data>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Data>): Int? {
         return state.anchorPosition
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
         try {
             val nextPage = params.key ?: 1
-            val characterList = apiService
+            val usersList = apiService
                 .getUserList(nextPage)
 
             return LoadResult.Page(
-                data = characterList.body()?.results.orEmpty(),
+                data = usersList.body()?.data.orEmpty(),
                 prevKey = if (nextPage == 1) null else nextPage - 1,
                 nextKey = nextPage + 1
             )

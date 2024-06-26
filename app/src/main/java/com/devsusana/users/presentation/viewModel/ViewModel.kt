@@ -13,20 +13,22 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.ApiResponse
-import com.devsusana.users.data.model.Result
+import com.devsusana.users.data.model.Data
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.usecase.GetDetailUserUseCase
 import com.devsusana.users.domain.usecase.GetListUsersUseCase
 import com.devsusana.users.view.pagin.ResultDataSource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ViewModel (
+@HiltViewModel
+class ViewModel @Inject constructor(
     private val app: Application,
     private val apiService: ApiService,
     private val getListUsersUseCase: GetListUsersUseCase,
@@ -65,7 +67,7 @@ class ViewModel (
         resultDataSource.invalidate()
     }
 
-    val resultUserList: Flow<PagingData<Result>> = flow {
+    val resultUserList: Flow<PagingData<Data>> = flow {
         val usersList = getListUsersUseCase.invoke(
             Pager(PagingConfig(pageSize = 50)) {
                 ResultDataSource(apiService).also { resultDataSource = it }
@@ -75,18 +77,18 @@ class ViewModel (
     }.cachedIn(viewModelScope)
 
 
-    private val _getUserDetail: MutableLiveData<Resource<ApiResponse>> by lazy {
-        MutableLiveData<Resource<ApiResponse>>()
+    private val _getUserDetail: MutableLiveData<Resource<Data>> by lazy {
+        MutableLiveData<Resource<Data>>()
     }
 
-    val getUserDetail: LiveData<Resource<ApiResponse>> get() = _getUserDetail
+    val getUserDetail: LiveData<Resource<Data>> get() = _getUserDetail
 
-    fun getCharacterDetailResponse(seed: String, context: Context? = app) =
+    fun getCharacterDetailResponse(id: Int, context: Context? = app) =
         viewModelScope.launch(dispatcher) {
             _getUserDetail.postValue(Resource.Loading())
             try {
                 if (isNetworkAvailable(context)) {
-                    val apiResult = getDetailUserUseCase.invoke(seed)
+                    val apiResult = getDetailUserUseCase.invoke(id)
                     _getUserDetail.postValue(apiResult)
                 } else {
                     _getUserDetail.postValue(Resource.Error("Internet is not available"))

@@ -29,7 +29,7 @@ object NetModule {
     @Provides
     @Singleton
     @ApiUrl
-    fun provideApiUrl(): String = "https://randomuser.me/api/"
+    fun provideApiUrl(): String = "https://reqres.in/api/"
 
     @Provides
     @Singleton

@@ -15,9 +15,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "URL_BASE", "\"https://randomuser.me/api/\"")
+        buildConfigField("String", "URL_BASE", "\"https://reqres.in/api/\"")
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -43,13 +42,14 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {

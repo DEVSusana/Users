@@ -1,8 +1,8 @@
 package com.devsusana.users.data.repository.dataSource
 
-import com.devsusana.users.data.model.ApiResponse
+import com.devsusana.users.data.model.Data
 import retrofit2.Response
 
 interface RemoteDataSource {
-    suspend fun getUserById(seed: String): Response<ApiResponse>
+    suspend fun getUserById(id: Int): Response<Data>
 }
