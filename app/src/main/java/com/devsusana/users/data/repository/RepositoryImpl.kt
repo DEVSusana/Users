@@ -2,7 +2,8 @@ package com.devsusana.users.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingData
-import com.devsusana.users.data.model.Data
+import com.devsusana.users.data.model.listuser.Data
+import com.devsusana.users.data.model.user.DataId
 import com.devsusana.users.data.repository.dataSource.RemoteDataSource
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.repository.Repository
@@ -17,11 +18,11 @@ class RepositoryImpl @Inject constructor(
         return pager.flow
     }
 
-    override suspend fun getUserById(id: Int): Resource<Data> {
+    override suspend fun getUserById(id: Int): Resource<DataId> {
         return responseToResource(remoteDataSource.getUserById(id))
     }
 
-    private fun responseToResource(response: Response<Data>): Resource<Data> {
+    private fun responseToResource(response: Response<DataId>): Resource<DataId> {
         if (response.isSuccessful) {
             response.body()?.let { result ->
                 return Resource.Success(result)

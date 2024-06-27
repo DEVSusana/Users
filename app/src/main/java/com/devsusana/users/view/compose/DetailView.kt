@@ -21,11 +21,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.annotation.ExperimentalCoilApi
-import com.devsusana.users.data.model.Data
+import com.devsusana.users.data.model.user.DataId
+import com.devsusana.users.data.model.user.DataUser
+import com.devsusana.users.data.model.user.SupportUser
 
 @ExperimentalCoilApi
 @Composable
-fun DetailView(detail: Data) {
+fun DetailView(detail: DataId) {
 
     ConstraintLayout() {
 
@@ -56,7 +58,7 @@ fun DetailView(detail: Data) {
 
                     ConstraintLayout() {
                         val imageConstraint = createRef()
-                        UserImage(imageUrl = detail.avatar, modifier = Modifier
+                        UserImage(imageUrl = detail.data.avatar, modifier = Modifier
                             .clip(
                                 RoundedCornerShape(
                                     topStart = 10.dp,
@@ -72,7 +74,7 @@ fun DetailView(detail: Data) {
                     }
 
                     Text(
-                        text = detail.first_name,
+                        text = detail.data.first_name,
                         Modifier
                             .padding(15.dp)
                             .align(Alignment.CenterHorizontally),
@@ -84,7 +86,7 @@ fun DetailView(detail: Data) {
                             Modifier.padding(start = 15.dp, top = 5.dp)
                         )
                         Text(
-                            text = detail.last_name,
+                            text = detail.data.last_name,
                             Modifier.padding(start = 15.dp, top = 5.dp)
                         )
                     }
@@ -94,7 +96,7 @@ fun DetailView(detail: Data) {
                             Modifier.padding(start = 15.dp, top = 5.dp)
                         )
                         Text(
-                            text = detail.email,
+                            text = detail.data.email,
                             Modifier.padding(start = 15.dp, top = 5.dp)
                         )
                     }
@@ -109,12 +111,18 @@ fun DetailView(detail: Data) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DetailViewPreview() {
-    val user = Data(
-        id = 2,
-        email = "janet.weaver@reqres.in",
-        first_name = "Janet",
-        last_name = "Weaver",
-        avatar = "https://reqres.in/img/faces/2-image.jpg"
+    val user = DataId(
+        DataUser(
+            id = 2,
+            email = "janet.weaver@reqres.in",
+            first_name = "Janet",
+            last_name = "Weaver",
+            avatar = "https://reqres.in/img/faces/2-image.jpg"
+        ),
+        SupportUser(
+            text = "To keep ReqRes free, contributions towards server costs are appreciated!",
+            url = "https://reqres.in/#support-heading"
+        )
     )
     DetailView(detail = user)
 }

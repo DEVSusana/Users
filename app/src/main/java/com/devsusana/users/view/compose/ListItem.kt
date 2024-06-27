@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
 import com.devsusana.users.R
-import com.devsusana.users.data.model.Data
+import com.devsusana.users.data.model.listuser.Data
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable

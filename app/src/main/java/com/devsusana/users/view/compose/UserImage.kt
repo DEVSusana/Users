@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberAsyncImagePainter
-import com.devsusana.users.data.model.Data
+import com.devsusana.users.data.model.listuser.Data
 
 @ExperimentalCoilApi
 @Composable

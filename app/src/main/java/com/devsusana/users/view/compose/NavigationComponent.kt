@@ -3,17 +3,26 @@ package com.devsusana.users.view.compose
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -22,7 +31,8 @@ import androidx.navigation.navArgument
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
-import com.devsusana.users.data.model.Data
+import com.devsusana.users.data.model.listuser.Data
+import com.devsusana.users.data.model.user.DataId
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.presentation.viewModel.ViewModel
 
@@ -41,7 +51,16 @@ fun NavigationComponent(
                 TopAppBar(
                     backgroundColor = Color.DarkGray
                 ) {
-                    //TODO añadir un texto
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(15.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(text = "Susana Córdoba Prueba ", style = MaterialTheme.typography.h5, color = Color.White)
+                        Spacer(modifier = Modifier.height(4.dp))
+                    }
                 }
             }) { padding ->
                 val resultItems: LazyPagingItems<Data> =
@@ -59,14 +78,14 @@ fun NavigationComponent(
         ) { backStackEntry ->
             backStackEntry.arguments?.getInt("id")?.let {
                 LaunchedEffect(it) {
-                    viewModel.getCharacterDetailResponse(it)
+                    viewModel.getUserDetailResponse(it)
                 }
 
             }
             val detail by viewModel.getUserDetail.observeAsState()
             when (detail) {
                 is Resource.Success -> {
-                    (detail as Resource.Success<Data>).data?.let { it1 ->
+                    (detail as Resource.Success<DataId>).data?.let { it1 ->
                         DetailView(
                             it1
                         )
@@ -95,7 +114,7 @@ fun NavigationComponent(
             val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
             DisposableEffect(backDispatcher) {
                 onDispose {
-                    viewModel.invalidateResultDataSource()
+                    //viewModel.invalidateResultDataSource()
                 }
             }
         }

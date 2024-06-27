@@ -3,7 +3,7 @@ package com.devsusana.users.view.pagin
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.Data
+import com.devsusana.users.data.model.listuser.Data
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
@@ -18,14 +18,17 @@ class ResultDataSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
         try {
+
             val nextPage = params.key ?: 1
             val usersList = apiService
-                .getUserList(nextPage)
+                .getUserList(nextPage, 6)
+
+            val totalPages = usersList.body()?.total_pages ?: 1
 
             return LoadResult.Page(
                 data = usersList.body()?.data.orEmpty(),
                 prevKey = if (nextPage == 1) null else nextPage - 1,
-                nextKey = nextPage + 1
+                nextKey = if(nextPage < totalPages) nextPage + 1 else null
             )
         } catch (exception: IOException) {
             return LoadResult.Error(exception)

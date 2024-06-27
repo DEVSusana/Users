@@ -15,7 +15,7 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
-import com.devsusana.users.data.model.Data
+import com.devsusana.users.data.model.listuser.Data
 import kotlinx.coroutines.flow.flowOf
 
 @ExperimentalCoilApi

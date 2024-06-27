@@ -1,4 +1,4 @@
-package com.devsusana.users.data.model
+package com.devsusana.users.data.model.listuser
 
 data class Data(
     val avatar: String,

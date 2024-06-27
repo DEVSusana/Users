@@ -13,7 +13,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.Data
+import com.devsusana.users.data.model.listuser.Data
+import com.devsusana.users.data.model.user.DataId
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.usecase.GetDetailUserUseCase
 import com.devsusana.users.domain.usecase.GetListUsersUseCase
@@ -77,13 +78,13 @@ class ViewModel @Inject constructor(
     }.cachedIn(viewModelScope)
 
 
-    private val _getUserDetail: MutableLiveData<Resource<Data>> by lazy {
-        MutableLiveData<Resource<Data>>()
+    private val _getUserDetail: MutableLiveData<Resource<DataId>> by lazy {
+        MutableLiveData<Resource<DataId>>()
     }
 
-    val getUserDetail: LiveData<Resource<Data>> get() = _getUserDetail
+    val getUserDetail: LiveData<Resource<DataId>> get() = _getUserDetail
 
-    fun getCharacterDetailResponse(id: Int, context: Context? = app) =
+    fun getUserDetailResponse(id: Int, context: Context? = app) =
         viewModelScope.launch(dispatcher) {
             _getUserDetail.postValue(Resource.Loading())
             try {

@@ -1,4 +1,4 @@
-package com.devsusana.users.data.model
+package com.devsusana.users.data.model.listuser
 
 data class ApiResponse(
     val `data`: List<Data>,
