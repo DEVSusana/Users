@@ -168,8 +168,10 @@ class ViewModelTest {
             viewModel.getUserDetailResponse(2,context)
             advanceUntilIdle()
 
+            val userReceived = viewModel.getUserDetail.value?.data
+
             // Verify the expected behavior
-            assertEquals(user, viewModel.getUserDetail.value)
+            assertEquals(user, userReceived)
         }
 
     @Test
