@@ -1,6 +1,6 @@
 package com.devsusana.users.data.model.listuser
 
-data class Support(
+data class UserSupportList(
     val text: String,
     val url: String
 )

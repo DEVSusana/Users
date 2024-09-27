@@ -3,20 +3,20 @@ package com.devsusana.users.view.pagin
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.listuser.Data
+import com.devsusana.users.data.model.listuser.UserDataList
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
 class ResultDataSource @Inject constructor(
     private val apiService: ApiService
-) : PagingSource<Int, Data>() {
+) : PagingSource<Int, UserDataList>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Data>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, UserDataList>): Int? {
         return state.anchorPosition
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UserDataList> {
         try {
 
             val nextPage = params.key ?: 1

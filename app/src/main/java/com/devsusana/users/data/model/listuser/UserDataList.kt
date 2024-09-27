@@ -1,6 +1,6 @@
 package com.devsusana.users.data.model.listuser
 
-data class Data(
+data class UserDataList(
     val avatar: String,
     val email: String,
     val first_name: String,

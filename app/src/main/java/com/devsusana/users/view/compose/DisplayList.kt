@@ -15,14 +15,14 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
-import com.devsusana.users.data.model.listuser.Data
+import com.devsusana.users.data.model.listuser.UserDataList
 import kotlinx.coroutines.flow.flowOf
 
 @ExperimentalCoilApi
 @Composable
 fun DisplayList(
     navController: NavController,
-    resultItems: LazyPagingItems<Data>,
+    resultItems: LazyPagingItems<UserDataList>,
     modifier: Modifier = Modifier
 ) {
     Surface(color = Color.LightGray) {
@@ -63,7 +63,7 @@ fun DisplayList(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DisplayListPreview() {
-    val user = Data(
+    val user = UserDataList(
         id = 2,
         email = "janet.weaver@reqres.in",
         first_name = "Janet",

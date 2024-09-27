@@ -1,10 +1,10 @@
 package com.devsusana.users.data.model.listuser
 
-data class ApiResponse(
-    val `data`: List<Data>,
+data class UserList(
+    val `data`: List<UserDataList>,
     val page: Int,
     val per_page: Int,
-    val support: Support,
+    val userSupportList: UserSupportList,
     val total: Int,
     val total_pages: Int
 )

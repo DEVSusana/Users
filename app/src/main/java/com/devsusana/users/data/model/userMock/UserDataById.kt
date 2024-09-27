@@ -1,6 +1,6 @@
-package com.devsusana.users.data.model.user
+package com.devsusana.users.data.model.userMock
 
-data class DataUser(
+data class UserDataById(
     val avatar: String,
     val email: String,
     val first_name: String,

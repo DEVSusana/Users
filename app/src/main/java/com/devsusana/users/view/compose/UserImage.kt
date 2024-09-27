@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberAsyncImagePainter
-import com.devsusana.users.data.model.listuser.Data
+import com.devsusana.users.data.model.listuser.UserDataList
 
 @ExperimentalCoilApi
 @Composable
@@ -35,7 +35,7 @@ fun UserImage(imageUrl: String, modifier: Modifier = Modifier) {
 @Composable
 fun CharacterImagePreview(){
 
-    val user = Data(
+    val user = UserDataList(
         id = 2,
         email = "janet.weaver@reqres.in",
         first_name = "Janet",

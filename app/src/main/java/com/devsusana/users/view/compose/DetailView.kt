@@ -21,13 +21,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.annotation.ExperimentalCoilApi
-import com.devsusana.users.data.model.user.DataId
-import com.devsusana.users.data.model.user.DataUser
-import com.devsusana.users.data.model.user.SupportUser
+import com.devsusana.users.data.model.userMock.UserById
+import com.devsusana.users.data.model.userMock.UserDataById
+import com.devsusana.users.data.model.userMock.UserSupportById
 
 @ExperimentalCoilApi
 @Composable
-fun DetailView(detail: DataId) {
+fun DetailView(detail: UserById) {
 
     ConstraintLayout() {
 
@@ -111,15 +111,15 @@ fun DetailView(detail: DataId) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DetailViewPreview() {
-    val user = DataId(
-        DataUser(
+    val user = UserById(
+        UserDataById(
             id = 2,
             email = "janet.weaver@reqres.in",
             first_name = "Janet",
             last_name = "Weaver",
             avatar = "https://reqres.in/img/faces/2-image.jpg"
         ),
-        SupportUser(
+        UserSupportById(
             text = "To keep ReqRes free, contributions towards server costs are appreciated!",
             url = "https://reqres.in/#support-heading"
         )

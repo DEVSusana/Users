@@ -27,13 +27,13 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
 import com.devsusana.users.R
-import com.devsusana.users.data.model.listuser.Data
+import com.devsusana.users.data.model.listuser.UserDataList
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 fun ListItem(
     navController: NavController,
-    detail: Data
+    detail: UserDataList
 ) {
 
     Card(
@@ -76,7 +76,7 @@ fun ListItem(
 @Preview(showBackground = true)
 @Composable
 fun ListItemPreview() {
-    val user = Data(
+    val user = UserDataList(
         id = 2,
         email = "janet.weaver@reqres.in",
         first_name = "Janet",

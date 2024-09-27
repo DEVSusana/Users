@@ -31,8 +31,8 @@ import androidx.navigation.navArgument
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
-import com.devsusana.users.data.model.listuser.Data
-import com.devsusana.users.data.model.user.DataId
+import com.devsusana.users.data.model.listuser.UserDataList
+import com.devsusana.users.data.model.userMock.UserById
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.presentation.viewModel.ViewModel
 
@@ -63,7 +63,7 @@ fun NavigationComponent(
                     }
                 }
             }) { padding ->
-                val resultItems: LazyPagingItems<Data> =
+                val resultItems: LazyPagingItems<UserDataList> =
                     viewModel.resultUserList.collectAsLazyPagingItems()
                 DisplayList(
                     navController = navController,
@@ -85,7 +85,7 @@ fun NavigationComponent(
             val detail by viewModel.getUserDetail.observeAsState()
             when (detail) {
                 is Resource.Success -> {
-                    (detail as Resource.Success<DataId>).data?.let { it1 ->
+                    (detail as Resource.Success<UserById>).data?.let { it1 ->
                         DetailView(
                             it1
                         )

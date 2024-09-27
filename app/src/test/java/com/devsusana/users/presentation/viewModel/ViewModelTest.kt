@@ -6,9 +6,9 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.user.DataId
-import com.devsusana.users.data.model.user.DataUser
-import com.devsusana.users.data.model.user.SupportUser
+import com.devsusana.users.data.model.userMock.UserById
+import com.devsusana.users.data.model.userMock.UserDataById
+import com.devsusana.users.data.model.userMock.UserSupportById
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.usecase.GetDetailUserUseCase
 import com.devsusana.users.domain.usecase.GetListUsersUseCase
@@ -146,15 +146,15 @@ class ViewModelTest {
                 .thenReturn(true)
 
             // Set up response
-            val user = DataId(
-                DataUser(
+            val user = UserById(
+                UserDataById(
                     id = 2,
                     email = "janet.weaver@reqres.in",
                     first_name = "Janet",
                     last_name = "Weaver",
                     avatar = "https://reqres.in/img/faces/2-image.jpg"
                 ),
-                SupportUser(
+                UserSupportById(
                     text = "To keep ReqRes free, contributions towards server costs are appreciated!",
                     url = "https://reqres.in/#support-heading"
                 )

@@ -13,8 +13,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.listuser.Data
-import com.devsusana.users.data.model.user.DataId
+import com.devsusana.users.data.model.listuser.UserDataList
+import com.devsusana.users.data.model.userMock.UserById
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.usecase.GetDetailUserUseCase
 import com.devsusana.users.domain.usecase.GetListUsersUseCase
@@ -68,7 +68,7 @@ class ViewModel @Inject constructor(
         resultDataSource.invalidate()
     }
 
-    val resultUserList: Flow<PagingData<Data>> = flow {
+    val resultUserList: Flow<PagingData<UserDataList>> = flow {
         val usersList = getListUsersUseCase.invoke(
             Pager(PagingConfig(pageSize = 50)) {
                 ResultDataSource(apiService).also { resultDataSource = it }
@@ -78,11 +78,11 @@ class ViewModel @Inject constructor(
     }.cachedIn(viewModelScope)
 
 
-    private val _getUserDetail: MutableLiveData<Resource<DataId>> by lazy {
-        MutableLiveData<Resource<DataId>>()
+    private val _getUserDetail: MutableLiveData<Resource<UserById>> by lazy {
+        MutableLiveData<Resource<UserById>>()
     }
 
-    val getUserDetail: LiveData<Resource<DataId>> get() = _getUserDetail
+    val getUserDetail: LiveData<Resource<UserById>> get() = _getUserDetail
 
     fun getUserDetailResponse(id: Int, context: Context? = app) =
         viewModelScope.launch(dispatcher) {
