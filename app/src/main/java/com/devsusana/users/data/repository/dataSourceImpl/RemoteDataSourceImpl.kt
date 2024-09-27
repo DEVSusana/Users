@@ -1,7 +1,7 @@
 package com.devsusana.users.data.repository.dataSourceImpl
 
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.userMock.UserById
+import com.devsusana.users.data.model.userById.UserById
 import com.devsusana.users.data.repository.dataSource.RemoteDataSource
 import retrofit2.Response
 import javax.inject.Inject

@@ -32,7 +32,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
 import com.devsusana.users.data.model.listuser.UserDataList
-import com.devsusana.users.data.model.userMock.UserById
+import com.devsusana.users.data.model.userById.UserById
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.presentation.viewModel.ViewModel
 

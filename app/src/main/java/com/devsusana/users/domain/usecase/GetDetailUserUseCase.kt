@@ -1,6 +1,6 @@
 package com.devsusana.users.domain.usecase
 
-import com.devsusana.users.data.model.userMock.UserById
+import com.devsusana.users.data.model.userById.UserById
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.repository.Repository
 

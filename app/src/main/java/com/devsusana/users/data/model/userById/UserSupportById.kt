@@ -1,4 +1,4 @@
-package com.devsusana.users.data.model.userMock
+package com.devsusana.users.data.model.userById
 
 data class UserSupportById(
     val text: String,

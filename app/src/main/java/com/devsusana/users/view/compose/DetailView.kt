@@ -21,9 +21,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.annotation.ExperimentalCoilApi
-import com.devsusana.users.data.model.userMock.UserById
-import com.devsusana.users.data.model.userMock.UserDataById
-import com.devsusana.users.data.model.userMock.UserSupportById
+import com.devsusana.users.data.model.userById.UserById
+import com.devsusana.users.data.model.userById.UserDataById
+import com.devsusana.users.data.model.userById.UserSupportById
 
 @ExperimentalCoilApi
 @Composable

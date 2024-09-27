@@ -3,7 +3,7 @@ package com.devsusana.users.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingData
 import com.devsusana.users.data.model.listuser.UserDataList
-import com.devsusana.users.data.model.userMock.UserById
+import com.devsusana.users.data.model.userById.UserById
 import com.devsusana.users.data.repository.dataSource.RemoteDataSource
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.repository.Repository

@@ -1,7 +1,7 @@
 package com.devsusana.users.data.api
 
 import com.devsusana.users.data.model.listuser.UserList
-import com.devsusana.users.data.model.userMock.UserById
+import com.devsusana.users.data.model.userById.UserById
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

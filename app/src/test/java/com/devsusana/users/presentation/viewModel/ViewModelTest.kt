@@ -6,9 +6,9 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.devsusana.users.data.api.ApiService
-import com.devsusana.users.data.model.userMock.UserById
-import com.devsusana.users.data.model.userMock.UserDataById
-import com.devsusana.users.data.model.userMock.UserSupportById
+import com.devsusana.users.data.model.userById.UserById
+import com.devsusana.users.data.model.userById.UserDataById
+import com.devsusana.users.data.model.userById.UserSupportById
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.usecase.GetDetailUserUseCase
 import com.devsusana.users.domain.usecase.GetListUsersUseCase

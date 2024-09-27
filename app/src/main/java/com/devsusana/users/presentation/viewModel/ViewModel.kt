@@ -14,7 +14,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.devsusana.users.data.api.ApiService
 import com.devsusana.users.data.model.listuser.UserDataList
-import com.devsusana.users.data.model.userMock.UserById
+import com.devsusana.users.data.model.userById.UserById
 import com.devsusana.users.data.utils.Resource
 import com.devsusana.users.domain.usecase.GetDetailUserUseCase
 import com.devsusana.users.domain.usecase.GetListUsersUseCase
